@@ -73,9 +73,15 @@ Lower left hand pane showing details of the bundles(s) selected in the Bundle Li
 
 * Total bundle size. This is a sum of the on-disk size of all assets.
 
-* Bundles that the current bundle depends on
+* Bundles that the current bundle depends on.
+
+    * Assets in that bundle referenced from the current bundle.
+    
+    * Assets in the current bundle referencing the asset in the dependency bundle.
 
 * Any messages (error/warning/info) associated with the current bundle.
+
+* Select bundles or assets to select assets in the Asset List that are dependent on the selection.
 
 ### Asset List
 
@@ -126,7 +132,7 @@ Other tools that generate asset bundle data can choose to integrate with the bro
 
 # Usage - Build
 
-The Build tab provides basic build functionality to get you started using asset bundles. In most profressional scenarios, users will end up needing a more advanced build setup. All are welcome to use the build code in this tool as a starting point for writing their own once this no longer meets their needs. Interface:
+The Build tab provides basic build functionality to get you started using asset bundles. In most profressional scenarios, users will end up needing a more advanced build setup. All are welcome to use the build code in this tool as a starting point for writing their own once this no longer meets their needs. For the most part, the options here are directly tied to the options the engine expects in [BuildAssetBundleOptions](https://docs.unity3d.com/ScriptReference/BuildAssetBundleOptions.html). Interface:
 
 * *Build Target* - Platform the bundles will be built for
 

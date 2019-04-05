@@ -380,17 +380,13 @@ namespace AssetBundleBrowser
 
             foreach (string filePath in Directory.GetFiles(sourceDirName, "*.*", SearchOption.AllDirectories))
             {
-				// CHRIS MODIFIED
-				string fileN = Path.GetFileName(filePath);
-				if (fileN != "StandaloneWindows64.manifest" && fileN.EndsWith(".manifest")) {
+                var fileDirName = Path.GetDirectoryName(filePath).Replace("\\", "/");
+                var fileName = Path.GetFileName(filePath);
+				if (fileName != "StandaloneWindows64.manifest" && fileName.EndsWith(".manifest")) {
 					continue;
 				}
-				// END CHRIS MODIFIED
-
-				string newFilePath = Path.Combine(Path.GetDirectoryName(filePath).Replace(sourceDirName, destDirName),
-                    Path.GetFileName(filePath));
-
-                File.Copy(filePath, newFilePath, true);
+                string newFilePath = Path.Combine(fileDirName.Replace(sourceDirName, destDirName), fileName);
+				File.Copy(filePath, newFilePath, true);
             }
         }
 
