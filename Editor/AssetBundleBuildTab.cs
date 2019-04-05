@@ -380,7 +380,14 @@ namespace AssetBundleBrowser
 
             foreach (string filePath in Directory.GetFiles(sourceDirName, "*.*", SearchOption.AllDirectories))
             {
-                string newFilePath = Path.Combine(Path.GetDirectoryName(filePath).Replace(sourceDirName, destDirName),
+				// CHRIS MODIFIED
+				string fileN = Path.GetFileName(filePath);
+				if (fileN != "StandaloneWindows64.manifest" && fileN.EndsWith(".manifest")) {
+					continue;
+				}
+				// END CHRIS MODIFIED
+
+				string newFilePath = Path.Combine(Path.GetDirectoryName(filePath).Replace(sourceDirName, destDirName),
                     Path.GetFileName(filePath));
 
                 File.Copy(filePath, newFilePath, true);
